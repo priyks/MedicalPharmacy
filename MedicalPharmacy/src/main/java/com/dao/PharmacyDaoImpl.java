@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.pojo.Medicine;
-import com.pojo.Supplier;
+
 
 
 @Component("pharmacyDaoImpl")

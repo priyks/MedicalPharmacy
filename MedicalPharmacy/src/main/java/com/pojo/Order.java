@@ -3,11 +3,9 @@ package com.pojo;
 
 public class Order {
 	private int orderId;
-	private Supplier supplier;
-	private  Medicine medicine;
+	private  String medicineName;
 	private String orderStatus;
-
-	
+	private int qauntity;
 	/**
 	 * @return the orderStatus
 	 */
@@ -27,33 +25,37 @@ public class Order {
 		return orderId;
 	}
 	/**
+	 * @return the medicineName
+	 */
+	public String getMedicineName() {
+		return medicineName;
+	}
+	/**
+	 * @param medicineName the medicineName to set
+	 */
+	public void setMedicineName(String medicineName) {
+		this.medicineName = medicineName;
+	}
+	/**
+	 * @return the qauntity
+	 */
+	public int getQauntity() {
+		return qauntity;
+	}
+	/**
+	 * @param qauntity the qauntity to set
+	 */
+	public void setQauntity(int qauntity) {
+		this.qauntity = qauntity;
+	}
+	/**
 	 * @param orderId the orderId to set
 	 */
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 	/**
-	 * @return the supplier
-	 */
-	public Supplier getSupplier() {
-		return supplier;
-	}
-	/**
-	 * @param supplier the supplier to set
-	 */
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
-	/**
 	 * @return the medicine
 	 */
-	public Medicine getMedicine() {
-		return medicine;
-	}
-	/**
-	 * @param medicine the medicine to set
-	 */
-	public void setMedicine(Medicine medicine) {
-		this.medicine = medicine;
-	}
+	
 }

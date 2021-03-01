@@ -6,7 +6,7 @@ import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
 import com.pojo.Pharmacy;
-import com.pojo.Supplier;
+
 
 public interface PharmacyService {
 	

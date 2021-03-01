@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.pojo.Medicine;
-import com.pojo.Supplier;
+
 
 public class RowMapperImplMedicine implements RowMapper<Medicine> {
 

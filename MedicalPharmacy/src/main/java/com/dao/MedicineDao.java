@@ -3,7 +3,6 @@ package com.dao;
 import java.util.List;
 
 import com.pojo.Medicine;
-import com.pojo.Supplier;
 
 public interface MedicineDao {
 

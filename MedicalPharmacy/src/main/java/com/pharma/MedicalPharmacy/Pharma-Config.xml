@@ -53,15 +53,6 @@
 		<property name="quantity" value="100"></property>
 	</bean>
 
-	<!-- Supplier -->
-	<bean id="supplier" class="com.pojo.Supplier" scope="prototype">
-		<property name="supplierId" value="44" />
-		<property name="supplierName" value="Kiran Dagade" />
-		<property name="contactNo" value="8456743212" />
-		<property name="emailId" value="kiran.d@gmail.com" />
-		<property name="address" value="Pune" />
-	</bean>
-	
 
 
 	<context:property-placeholder
