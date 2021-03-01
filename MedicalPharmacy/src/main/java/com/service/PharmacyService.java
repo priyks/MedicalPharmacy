@@ -12,9 +12,9 @@ public interface PharmacyService {
 	
 	public void checkStock(Medicine medicine);
 	public List<Order> pendingOrder(Order order); 
-	public void orderStock(Medicine medicine);
-	public boolean searchDrByFristName(Pharmacy pharmacy);
-	public boolean searchDrByLastName(Pharmacy pharmacy);
+	public void orderStock(Order order);
+	public boolean searchDrByFristName(String firstName);
+	public boolean searchDrByLastName(String LastName);
 	public List<Doctor> getDrList(Pharmacy pharmacy);
 	public boolean searchMedicineByName(Medicine medicine);
 	public boolean searchMedicineByBrand(Medicine medicine);

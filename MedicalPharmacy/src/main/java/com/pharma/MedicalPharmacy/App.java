@@ -6,7 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.dao.PharmacyDaoImpl;
 import com.pojo.Medicine;
+import com.pojo.Order;
 import com.pojo.Pharmacy;
+import com.service.ServiceController;
 
 
 
@@ -24,7 +26,7 @@ public class App {
 		System.out.println(medicine);
 		
 		PharmacyDaoImpl dao = context.getBean("pharmacyDaoImpl", PharmacyDaoImpl.class);
-		System.out.println("Supplier " + dao);
+		System.out.println("Pharmacy " + dao);
 		
 		Medicine newMedicine=new Medicine();
 		
@@ -61,6 +63,68 @@ public class App {
 		for (Medicine medicines : listOfMedicine) {
 			System.out.println(medicines);
 		}*/
+		
+		Order order=new Order();
+		
+		//insert order 
+	/*	order.setOrderId(115);
+		order.setMedicineName("Metformin");
+		order.setQuantity(20);
+		
+	
+		int result=dao.insertOrder(order);
+		System.out.println("Request raised for Order.. "+result);*/
+		
+		// update order
+		
+		/*order.setMedicineName("Metform");
+		order.setQuantity(30);
+		order.setOrderId(115);
+		int updateResult=dao.updateOrder(order);
+		System.out.println("order updated ...");*/
+		
+		// update order status to complete 
+		
+		/*order.setOrderId(115);
+		int res=dao.updateOrderStatus(order);
+		System.out.println(" order status updated to complete ...");
+		*/
+		
+		// delete order by order id
+		/*dao.deleteOrder(113);
+		System.out.println("order delete ...");
+		*/
+		
+		// get specific order by id
+		
+	  /* Order getOrder=dao.getOrder(112);	
+	   System.out.println(getOrder);*/
+		
+		/*System.out.println("List of all pending orders");
+		List<Order> pendingOrders=dao.getPendingOrders(order);
+		for(Order orders: pendingOrders) {
+			System.out.println(orders);
+		}*/
+		
+		// list of all orders
+	  /*System.out.println("List of All Orders : ");
+		List<Order> allOrders=dao.getAllOrders();
+		for(Order allorder:allOrders) {
+			System.out.println(allorder);
+		}*/
+		
+		ServiceController dbService=context.getBean("serviceController",ServiceController.class);
+		System.out.println(dbService);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

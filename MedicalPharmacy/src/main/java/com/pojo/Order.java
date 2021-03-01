@@ -5,24 +5,18 @@ public class Order {
 	private int orderId;
 	private  String medicineName;
 	private String orderStatus;
-	private int qauntity;
-	/**
-	 * @return the orderStatus
-	 */
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-	/**
-	 * @param orderStatus the orderStatus to set
-	 */
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
+	private int quantity;
 	/**
 	 * @return the orderId
 	 */
 	public int getOrderId() {
 		return orderId;
+	}
+	/**
+	 * @param orderId the orderId to set
+	 */
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 	/**
 	 * @return the medicineName
@@ -37,25 +31,35 @@ public class Order {
 		this.medicineName = medicineName;
 	}
 	/**
-	 * @return the qauntity
+	 * @return the orderStatus
 	 */
-	public int getQauntity() {
-		return qauntity;
+	public String getOrderStatus() {
+		return orderStatus;
 	}
 	/**
-	 * @param qauntity the qauntity to set
+	 * @param orderStatus the orderStatus to set
 	 */
-	public void setQauntity(int qauntity) {
-		this.qauntity = qauntity;
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 	/**
-	 * @param orderId the orderId to set
+	 * @return the quantity
 	 */
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public int getQuantity() {
+		return quantity;
 	}
 	/**
-	 * @return the medicine
+	 * @param quantity the quantity to set
 	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", medicineName=" + medicineName + ", orderStatus=" + orderStatus
+				+ ", quantity=" + quantity + "]";
+	}
+	
 	
 }

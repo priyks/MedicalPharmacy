@@ -10,18 +10,25 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util.xsd
    ">
-   <context:component-scan base-package="com.dao"/>
-    <bean class="org.springframework.jdbc.core.JdbcTemplate" name="jdbc-template" p:dataSource-ref="ds"/>
-   
-   
-   <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
-   <property name="DriverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-   <property name="url" value="jdbc:mysql://localhost:9090/pharmacy"></property>
-   <property name="username" value="root"></property>
-   <property name="password" value="12@SyZip"></property>
-   </bean>
-   
-   <bean class="com.dao.PharmacyDaoImpl" name="PharmacyDaoImpl" p:jdbcTemplate-ref="jdbc-template"/>
+	<context:component-scan
+		base-package="com.dao,com.service" />
+	<bean class="org.springframework.jdbc.core.JdbcTemplate"
+		name="jdbc-template" p:dataSource-ref="ds" />
+
+
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		name="ds">
+		<property name="DriverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:9090/pharmacy"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="12@SyZip"></property>
+	</bean>
+
+	<bean class="com.dao.PharmacyDaoImpl" name="PharmacyDaoImpl"
+		p:jdbcTemplate-ref="jdbc-template" />
 
 	<bean name="pharmacy" class="com.pojo.Pharmacy">
 		<property name="name" value="${name}" />
@@ -34,8 +41,10 @@
 			</list>
 		</property>
 	</bean>
+
+	<bean class="com.service.ServiceController" name="serviceController" p:pharmacyDaoImpl-ref="PharmacyDaoImpl"/>
 	
-	
+
 	<bean id="doctor1" class="com.pojo.Doctor" scope="prototype">
 		<property name="drID" value="101" />
 		<property name="firstName" value="priyanka" />
@@ -47,7 +56,7 @@
 	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype">
 		<property name="medicineId" value="111" />
 		<property name="medicineName" value="Cipla" />
-		<property name="medicineCategory" value="${medicine1.categoryName}" />
+		<property name="medicineCategory" value="Tablet" />
 		<property name="brand" value="A-Cox-450" />
 		<property name="price" value="225"></property>
 		<property name="quantity" value="100"></property>
@@ -56,8 +65,6 @@
 
 
 	<context:property-placeholder
-		location="com/pharma/MedicalPharmacy/pharmacy.properties,com/pharma/MedicalPharmacy/MedicineCategory.properties" />
-
-
+		location="com/pharma/MedicalPharmacy/pharmacy.properties" />
 
 </beans> 
