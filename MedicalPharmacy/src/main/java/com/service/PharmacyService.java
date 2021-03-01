@@ -3,22 +3,21 @@ package com.service;
 import java.util.List;
 
 import com.pojo.Doctor;
-import com.pojo.Inventory;
-import com.pojo.OrderStock;
+import com.pojo.Medicine;
+import com.pojo.Order;
 import com.pojo.Pharmacy;
-import com.pojo.Stock;
 import com.pojo.Supplier;
 
 public interface PharmacyService {
 	
-	public void checkStock(Inventory inventory);
-	public List<OrderStock> pendingOrder(OrderStock orderStock); 
-	public void orderStock(Stock stock,Supplier supplier);
+	public void checkStock(Medicine medicine);
+	public List<Order> pendingOrder(Order order); 
+	public void orderStock(Medicine medicine,Supplier supplier);
 	public boolean searchDrByFristName(Pharmacy pharmacy);
 	public boolean searchDrByLastName(Pharmacy pharmacy);
 	public List<Doctor> getDrList(Pharmacy pharmacy);
-	public boolean searchMedicineByName(Inventory inventory);
-	public boolean searchMedicineByBrand(Inventory inventory );
-	public List<Stock> getAvaliableStock(Inventory inventory);
+	public boolean searchMedicineByName(Medicine medicine);
+	public boolean searchMedicineByBrand(Medicine medicine);
+	public List<Medicine> getAvaliableStock(Medicine medicine);
 
 }

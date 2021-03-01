@@ -7,7 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.dao.PharmacyDaoImpl;
 import com.pojo.Medicine;
 import com.pojo.Pharmacy;
-import com.pojo.Stock;
 import com.pojo.Supplier;
 
 
@@ -25,8 +24,6 @@ public class App {
 		System.out.println(medicine);
 		Supplier supplier = context.getBean("supplier", Supplier.class);
 		System.out.println(supplier);
-		Stock stock = context.getBean("stock1", Stock.class);
-		System.out.println(stock);
 		PharmacyDaoImpl dao = context.getBean("pharmacyDaoImpl", PharmacyDaoImpl.class);
 		System.out.println("Supplier " + dao);
 		Supplier s = new Supplier();
@@ -34,7 +31,8 @@ public class App {
 		 // insert supplier 
 		  s.setSupplierId(102); s.setSupplierName("Vinod kumar");
 		  s.setContactNo("9766357093"); s.setEmailId("vinodkumar@gmail.com");
-		  s.setAddress("Pune"); int r=dao.insertSupplier(s);
+		  s.setAddress("Pune"); 
+		  int r=dao.insertSupplier(s);
 		  System.out.println("Supplier added...");*/
 		 
 
@@ -59,6 +57,40 @@ public class App {
 			System.out.println(suppliers);
 		}*/
 		
+		Medicine newMedicine=new Medicine();
+	/*//insert medicine
+		
+		newMedicine.setMedicineId(5);
+		newMedicine.setMedicineName("Gabapentin");
+		newMedicine.setBrand("Rybelsus");
+		newMedicine.setPrice(15);
+		newMedicine.setMedicineCategory("Tablet");
+		newMedicine.setQuantity(70);
+		int result=dao.insertMedicine(newMedicine);
+		System.out.println("Medicine Added...");*/
+		
+		
+		/*// update Medicine
+		newMedicine.setMedicineName("Vicks inhaler");
+		newMedicine.setBrand("Vicks");
+		newMedicine.setPrice(40);
+		newMedicine.setMedicineCategory("Inhaler");
+		newMedicine.setQuantity(50);
+		newMedicine.setMedicineId(1);
+		int updateResult=dao.updateMedicine(newMedicine);
+		
+		System.out.println("medicine Updated ...");*/
+		
+	/*	System.out.println("Single Medicine by Id");
+		Medicine medi = dao.getMedicine(1);
+		System.out.println(medi);
+		
+		System.out.println("List of Medicines ");
+		
+		List<Medicine> listOfMedicine = dao.getAllMedicines();
+		for (Medicine medicines : listOfMedicine) {
+			System.out.println(medicines);
+		}*/
 		
 		
 		

@@ -1,12 +1,25 @@
 package com.pojo;
 
 
-public class OrderStock {
+public class Order {
 	private int orderId;
 	private Supplier supplier;
 	private  Medicine medicine;
-	private int quantity;
+	private String orderStatus;
+
 	
+	/**
+	 * @return the orderStatus
+	 */
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	/**
+	 * @param orderStatus the orderStatus to set
+	 */
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
 	/**
 	 * @return the orderId
 	 */
@@ -43,18 +56,4 @@ public class OrderStock {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
-	/**
-	 * @return the quantity
-	 */
-	public int getQuantity() {
-		return quantity;
-	}
-	/**
-	 * @param quantity the quantity to set
-	 */
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	
-
 }

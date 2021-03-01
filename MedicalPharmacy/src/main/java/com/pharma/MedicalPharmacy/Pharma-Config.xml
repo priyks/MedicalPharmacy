@@ -33,8 +33,9 @@
 				<ref bean="doctor1" />
 			</list>
 		</property>
-
 	</bean>
+	
+	
 	<bean id="doctor1" class="com.pojo.Doctor" scope="prototype">
 		<property name="drID" value="101" />
 		<property name="firstName" value="priyanka" />
@@ -49,15 +50,8 @@
 		<property name="medicineCategory" value="${medicine1.categoryName}" />
 		<property name="brand" value="A-Cox-450" />
 		<property name="price" value="225"></property>
-	</bean>
-
-	<!-- Stock bean -->
-	<bean id="stock1" class="com.pojo.Stock" >
-		<property name="stockId" value="555" />
-		<property name="medicine" ref="medicine1" />
 		<property name="quantity" value="100"></property>
 	</bean>
-	
 
 	<!-- Supplier -->
 	<bean id="supplier" class="com.pojo.Supplier" scope="prototype">

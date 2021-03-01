@@ -8,6 +8,19 @@ public class Medicine {
 	private String brand;
 	private float price;
 	private String  medicineCategory;
+	private int quantity;
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	/**
 	 * @return the brand
 	 */
@@ -68,16 +81,10 @@ public class Medicine {
 	public void setMedicineCategory(String medicineCategory) {
 		this.medicineCategory = medicineCategory;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "[medicineId=" + medicineId + ", medicineName=" + medicineName + ", brand=" + brand + ", price="
-				+ price + ", medicineCategory=" + medicineCategory + "]";
+		return "Medicine [medicineId=" + medicineId + ", medicineName=" + medicineName + ", brand=" + brand + ", price="
+				+ price + ", medicineCategory=" + medicineCategory + ", quantity=" + quantity + "]";
 	}
-	
-	
-	
-	
-	
-
 }

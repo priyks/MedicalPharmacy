@@ -15,6 +15,7 @@ public class RowMapperImplMedicine implements RowMapper<Medicine> {
 		medicine.setBrand(rs.getString(3));
 		medicine.setPrice(rs.getFloat(4));
 		medicine.setMedicineCategory(rs.getString(5));
+		medicine.setQuantity(rs.getInt(6));
 		return medicine;
 	}
 

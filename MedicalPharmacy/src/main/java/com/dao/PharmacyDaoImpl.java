@@ -67,28 +67,36 @@ public class PharmacyDaoImpl implements SupplierDao,MedicineDao {
 	}
 
 	public int insertMedicine(Medicine medicine) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query = "insert into medicine(medicineId,medicineName,brand,price,medicineCategory,quantity) values(?,?,?,?,?,?)";
+		int r = this.jdbcTemplate.update(query, medicine.getMedicineId(),medicine.getMedicineName(),medicine.getBrand(),
+				medicine.getPrice(),medicine.getMedicineCategory(),medicine.getQuantity());
+		return r;
 	}
 
 	public int updateMedicine(Medicine medicine) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query = "update medicine set medicineName=? , brand=?, price=?, medicineCategory=?, quantity=? where medicineId=?";
+		int r = this.jdbcTemplate.update(query, medicine.getMedicineName(),medicine.getBrand(),
+				medicine.getPrice(),medicine.getMedicineCategory(),medicine.getQuantity(),medicine.getMedicineId());
+		return r;
 	}
 
 	public int deleteMedicine(int medicineId) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query="delete from medicine where medicineId=?";
+		int r=this.jdbcTemplate.update(query,medicineId);
+			return r;
 	}
 
 	public Medicine getMedicine(int medicineId) {
-		// TODO Auto-generated method stub
-		return null;
+		String query="select * from medicine where medicineId=?";
+		 RowMapper<Medicine> rowMapper=new RowMapperImplMedicine();
+		 Medicine medicine=(Medicine) this.jdbcTemplate.queryForObject(query, rowMapper,medicineId ); 
+		 return medicine;
 	}
 
 	public List<Medicine> getAllMedicines() {
-		// TODO Auto-generated method stub
-		return null;
+		 String query="select * from medicine";
+		 List<Medicine> medicines=this.jdbcTemplate.query(query,new  RowMapperImplMedicine());
+		return  medicines;
 	}
 
 }
