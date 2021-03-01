@@ -10,14 +10,15 @@ import com.pojo.Pharmacy;
 
 public interface PharmacyService {
 	
-	public void checkStock(Medicine medicine);
 	public List<Order> pendingOrder(Order order); 
 	public void orderStock(Order order);
 	public boolean searchDrByFristName(String firstName);
 	public boolean searchDrByLastName(String LastName);
 	public List<Doctor> getDrList(Pharmacy pharmacy);
-	public boolean searchMedicineByName(Medicine medicine);
-	public boolean searchMedicineByBrand(Medicine medicine);
-	public List<Medicine> getAvaliableStock(Medicine medicine);
+	public boolean searchMedicineByName(String medicineName);
+	public boolean searchMedicineByBrand(String medicineBrand);
+	public void getAvaliableStock(Medicine medicine);
+	public void getPharmacyDetails();
+
 
 }

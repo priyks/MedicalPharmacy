@@ -114,7 +114,7 @@ public class App {
 		}*/
 		
 		ServiceController dbService=context.getBean("serviceController",ServiceController.class);
-		System.out.println(dbService);
+		System.out.println(dbService.getContext());
 		
 		
 		
