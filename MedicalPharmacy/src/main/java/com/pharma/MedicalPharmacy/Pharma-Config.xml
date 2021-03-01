@@ -1,0 +1,78 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd
+   ">
+   <context:component-scan base-package="com.dao"/>
+    <bean class="org.springframework.jdbc.core.JdbcTemplate" name="jdbc-template" p:dataSource-ref="ds"/>
+   
+   
+   <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
+   <property name="DriverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+   <property name="url" value="jdbc:mysql://localhost:9090/pharmacy"></property>
+   <property name="username" value="root"></property>
+   <property name="password" value="12@SyZip"></property>
+   </bean>
+   
+   <bean class="com.dao.PharmacyDaoImpl" name="PharmacyDaoImpl" p:jdbcTemplate-ref="jdbc-template"/>
+
+	<bean name="pharmacy" class="com.pojo.Pharmacy">
+		<property name="name" value="${name}" />
+		<property name="licenceNo" value="${licenceNo}" />
+		<property name="contactNo" value="${contactNo}" />
+		<property name="address" value="${address}" />
+		<property name="doctorList">
+			<list>
+				<ref bean="doctor1" />
+			</list>
+		</property>
+
+	</bean>
+	<bean id="doctor1" class="com.pojo.Doctor" scope="prototype">
+		<property name="drID" value="101" />
+		<property name="firstName" value="priyanka" />
+		<property name="lastName" value="kulkarni" />
+		<property name="drQualification" value="BHMS" />
+	</bean>
+
+	<!-- Medicine bean -->
+	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype">
+		<property name="medicineId" value="111" />
+		<property name="medicineName" value="Cipla" />
+		<property name="medicineCategory" value="${medicine1.categoryName}" />
+		<property name="brand" value="A-Cox-450" />
+		<property name="price" value="225"></property>
+	</bean>
+
+	<!-- Stock bean -->
+	<bean id="stock1" class="com.pojo.Stock" >
+		<property name="stockId" value="555" />
+		<property name="medicine" ref="medicine1" />
+		<property name="quantity" value="100"></property>
+	</bean>
+	
+
+	<!-- Supplier -->
+	<bean id="supplier" class="com.pojo.Supplier" scope="prototype">
+		<property name="supplierId" value="44" />
+		<property name="supplierName" value="Kiran Dagade" />
+		<property name="contactNo" value="8456743212" />
+		<property name="emailId" value="kiran.d@gmail.com" />
+		<property name="address" value="Pune" />
+	</bean>
+	
+
+
+	<context:property-placeholder
+		location="com/pharma/MedicalPharmacy/pharmacy.properties,com/pharma/MedicalPharmacy/MedicineCategory.properties" />
+
+
+
+</beans> 
