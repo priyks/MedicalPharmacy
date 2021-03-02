@@ -6,8 +6,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.dao.PharmacyDaoImpl;
+import com.dao.RowMapperImplMedicine;
 import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
@@ -139,5 +141,7 @@ public class ServiceController implements PharmacyService {
 				+ "\nLicence no : " + pharmacy.getLicenceNo() + "\nAddress :" + pharmacy.getAddress());
 
 	}
+	
+
 
 }

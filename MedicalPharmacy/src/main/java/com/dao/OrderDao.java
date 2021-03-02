@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.pojo.Order;
@@ -14,5 +15,5 @@ public interface OrderDao {
 	public Order getOrder(int orderId);
 	public List<Order> getAllOrders();
 	public List<Order> getPendingOrders(Order order);
-	public void raiseRequestIfOutOfStock();
+	public void raiseRequestIfOutOfStock() throws NumberFormatException, IOException;
 }

@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,9 +158,17 @@ public class PharmacyDaoImpl implements MedicineDao, OrderDao {
 
 	}
 
-	public void raiseRequestIfOutOfStock() {
-		
+	public void raiseRequestIfOutOfStock() throws NumberFormatException, IOException {
+		String query = "select * from medicine where quantity=0";
+		RowMapper<Medicine> rowMapper = new RowMapperImplMedicine();
+		Medicine medicine = (Medicine) this.jdbcTemplate.queryForObject(query, rowMapper);
+		if(medicine!=null) {
+			Order order=new Order();
+			order.setOrderDetails();
+			insertOrder( order);
+			System.out.println("Order is rasied for medicine "+medicine.getMedicineName());
+		}
 	
 	}
-
+	
 }
