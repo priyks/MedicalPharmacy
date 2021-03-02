@@ -1,6 +1,10 @@
 package com.pojo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
+
 
 public class Medicine {
 	private int medicineId;
@@ -84,7 +88,29 @@ public class Medicine {
 
 	@Override
 	public String toString() {
-		return "Medicine [medicineId=" + medicineId + ", medicineName=" + medicineName + ", brand=" + brand + ", price="
+		return "[medicineId=" + medicineId + ", medicineName=" + medicineName + ", brand=" + brand + ", price="
 				+ price + ", medicineCategory=" + medicineCategory + ", quantity=" + quantity + "]";
+	}
+	
+	public void setMedicineDetails() throws IOException {
+	 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter Medicine Id :");
+		int id=Integer.parseInt(br.readLine());
+		setMedicineId(id);
+		System.out.println("Enter Medicine Name :");
+		String name=br.readLine();
+		setMedicineName(name);
+		System.out.println("Enter Medicine Brand :");
+		String brand=br.readLine();
+		setBrand(brand);
+		System.out.println("Enter Medicine price :");
+		float price=Float.parseFloat(br.readLine());
+		setPrice(price);
+		System.out.println("Enter Medicine Category :");
+		String category=br.readLine();
+		setMedicineCategory(category);
+		System.out.println("Enter Medicine Qauntity :");
+		int quantity=Integer.parseInt(br.readLine());
+		setQuantity(quantity);
 	}
 }

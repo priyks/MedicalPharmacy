@@ -18,5 +18,6 @@ public class RowMapperImplMedicine implements RowMapper<Medicine> {
 		medicine.setQuantity(rs.getInt(6));
 		return medicine;
 	}
+	
 
 }

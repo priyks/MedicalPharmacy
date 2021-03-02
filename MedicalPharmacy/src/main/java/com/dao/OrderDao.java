@@ -14,4 +14,5 @@ public interface OrderDao {
 	public Order getOrder(int orderId);
 	public List<Order> getAllOrders();
 	public List<Order> getPendingOrders(Order order);
+	public void raiseRequestIfOutOfStock();
 }

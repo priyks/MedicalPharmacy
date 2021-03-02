@@ -1,5 +1,9 @@
 package com.pojo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Order {
 	private int orderId;
@@ -57,8 +61,21 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", medicineName=" + medicineName + ", orderStatus=" + orderStatus
+		return "[orderId=" + orderId + ", medicineName=" + medicineName + ", orderStatus=" + orderStatus
 				+ ", quantity=" + quantity + "]";
+	}
+	
+	public void setOrderDetails() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter Order Id :");
+		int id=Integer.parseInt(br.readLine());
+		System.out.println("Enter Medicine Name :");
+		String name=br.readLine();
+		setMedicineName(name);
+		System.out.println("Enter Order quantity");
+		int quantity=Integer.parseInt(br.readLine());
+		setQuantity(quantity);
+		
 	}
 	
 	
