@@ -280,6 +280,7 @@ public class App {
 					break;
 				case 5:
 					dao.raiseRequestIfOutOfStock();
+					break;
 				case 6:
 					System.out.println("List of all pending orders");
 					List<Order> pendingOrders = dao.getPendingOrders(order);

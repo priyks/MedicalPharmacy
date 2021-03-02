@@ -163,6 +163,7 @@ public class PharmacyDaoImpl implements MedicineDao, OrderDao {
 		RowMapper<Medicine> rowMapper = new RowMapperImplMedicine();
 		Medicine medicine = (Medicine) this.jdbcTemplate.queryForObject(query, rowMapper);
 		if(medicine!=null) {
+		   System.out.println("This Medicine is Out Off Stock : "+medicine);
 			Order order=new Order();
 			order.setOrderDetails();
 			insertOrder( order);
