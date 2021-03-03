@@ -5,7 +5,11 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.pojo.Medicine;
 
-
+/**
+ * This class RowMapperImplMedicine maps the medicine result set to medicine object and return that object 
+ * @author priyankaku
+ *
+ */
 public class RowMapperImplMedicine implements RowMapper<Medicine> {
 
 	public Medicine mapRow(ResultSet rs, int rowNum) throws SQLException {

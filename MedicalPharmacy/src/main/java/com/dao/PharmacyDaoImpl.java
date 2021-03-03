@@ -8,7 +8,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import com.pojo.Medicine;
 import com.pojo.Order;
-
+/**
+ * This class implements MedicineDao and OrderDao interfaces 
+ * and provides method implementation 
+ * This class have jdbcTemplate, it is injected by pharmacyDaoImpl bean from config file 
+ * @author priyankaku
+ *
+ */
 public class PharmacyDaoImpl implements MedicineDao, OrderDao {
 
 	private JdbcTemplate jdbcTemplate;
@@ -141,7 +147,7 @@ public class PharmacyDaoImpl implements MedicineDao, OrderDao {
 	}
 
 	public Medicine searchMedicineByName(String Name) {
-		// TODO Auto-generated method stub
+	
 		String query = "select * from medicine where medicineName=?";
 		RowMapper<Medicine> rowMapper = new RowMapperImplMedicine();
 		Medicine medicine = (Medicine) this.jdbcTemplate.queryForObject(query, rowMapper, Name);
@@ -150,7 +156,7 @@ public class PharmacyDaoImpl implements MedicineDao, OrderDao {
 	}
 
 	public Medicine searchMedicineByBrand(String brand) {
-		// TODO Auto-generated method stub
+	
 		String query = "select * from medicine where brand=?";
 		RowMapper<Medicine> rowMapper = new RowMapperImplMedicine();
 		Medicine medicine = (Medicine) this.jdbcTemplate.queryForObject(query, rowMapper, brand);

@@ -30,7 +30,7 @@ public class App {
 		 */
 
 		PharmacyDaoImpl dao = context.getBean("pharmacyDaoImpl", PharmacyDaoImpl.class);
-		System.out.println("Pharmacy " + dao);
+		//System.out.println("Pharmacy " + dao);
 
 		/*
 		 * ServiceController controller=new ServiceController();
@@ -109,11 +109,9 @@ public class App {
 		 * System.out.println(allorder); }
 		 */
 		ServiceController dbService = context.getBean("serviceController", ServiceController.class);
-		System.out.println(dbService);
+		//System.out.println(dbService);
 
 		int i = 0;
-
-		System.out.println("thanks for using our system :");
 
 		do {
 
