@@ -11,7 +11,7 @@
     http://www.springframework.org/schema/util/spring-util.xsd
    ">
 	<!-- <context:component-scan base-package="com.dao , com.service" /> -->
-    
+
 	<bean class="org.springframework.jdbc.core.JdbcTemplate"
 		name="jdbc-template" p:dataSource-ref="ds" />
 
@@ -27,16 +27,13 @@
 		<property name="password" value="12@SyZip"></property>
 	</bean>
 
-	<bean id="pharmacyDaoImpl" class="com.dao.PharmacyDaoImpl" 
+	<bean id="pharmacyDaoImpl" class="com.dao.PharmacyDaoImpl"
 		p:jdbcTemplate-ref="jdbc-template" />
-		
-	<!-- 	<bean class="com.dao.PharmacyDaoImpl" name="pharmacyDaoImplA">
-		<property name="jdbcTemplate" >
-		<ref bean="jdbc-template"/>
-		</property>
-        </bean> -->
-        
-        
+
+	<!-- <bean class="com.dao.PharmacyDaoImpl" name="pharmacyDaoImplA"> <property 
+		name="jdbcTemplate" > <ref bean="jdbc-template"/> </property> </bean> -->
+
+
 	<bean name="pharmacy" class="com.pojo.Pharmacy">
 		<property name="name" value="${name}" />
 		<property name="licenceNo" value="${licenceNo}" />
@@ -48,12 +45,12 @@
 			</list>
 		</property>
 	</bean>
-	
-	
- <bean id="serviceController" class="com.service.ServiceController" >
-	<property name="ph" ref="pharmacyDaoImpl"/>
-	</bean> 
-	
+
+	<bean id="serviceController" class="com.service.ServiceController">
+		<property name="ph" ref="pharmacyDaoImpl" />
+		<property name="pharmacy" ref="pharmacy"/>
+	</bean>
+
 	<bean id="doctor1" class="com.pojo.Doctor" scope="prototype">
 		<property name="drID" value="101" />
 		<property name="firstName" value="priyanka" />
@@ -71,9 +68,7 @@
 		<property name="quantity" value="100"></property>
 	</bean>
 
-
-
 	<context:property-placeholder
-		location="com/pharma/pharmacy.properties" />
+		location="com/resource/pharmacy.properties" />
 
 </beans> 

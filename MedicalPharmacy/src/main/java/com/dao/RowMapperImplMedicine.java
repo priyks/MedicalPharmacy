@@ -19,5 +19,4 @@ public class RowMapperImplMedicine implements RowMapper<Medicine> {
 		return medicine;
 	}
 	
-
 }

@@ -17,10 +17,12 @@ public class App {
 	public static void main(String[] args) throws IOException {
 		// ApplicationContext context = new
 		// ClassPathXmlApplicationContext("com/pharma/Pharma-Config.xml");
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		ServiceController controller = new ServiceController();
 		ApplicationContext context = controller.getApplicationContext();
 		Pharmacy pharmacy = context.getBean("pharmacy", Pharmacy.class);
+		
 		/*
 		 * System.out.println(pharmacy); System.out.println(pharmacy.getDoctorList());
 		 * Medicine medicine = context.getBean("medicine1", Medicine.class);
@@ -56,7 +58,7 @@ public class App {
 		 * medicines : listOfMedicine) { System.out.println(medicines); }
 		 */
 
-		Order order = new Order();
+	     Order order = new Order();
 
 		// insert order
 		/*
