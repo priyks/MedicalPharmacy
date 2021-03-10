@@ -15,7 +15,6 @@
 	<bean class="org.springframework.jdbc.core.JdbcTemplate"
 		name="jdbc-template" p:dataSource-ref="ds" />
 
-
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="ds">
@@ -59,14 +58,8 @@
 	</bean>
 
 	<!-- Medicine bean -->
-	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype">
-		<property name="medicineId" value="111" />
-		<property name="medicineName" value="Cipla" />
-		<property name="medicineCategory" value="Tablet" />
-		<property name="brand" value="A-Cox-450" />
-		<property name="price" value="225"></property>
-		<property name="quantity" value="100"></property>
-	</bean>
+	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype"/>
+
 
 	<context:property-placeholder
 		location="com/resource/pharmacy.properties" />

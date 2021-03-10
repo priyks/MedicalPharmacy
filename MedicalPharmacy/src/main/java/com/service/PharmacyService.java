@@ -20,5 +20,4 @@ public interface PharmacyService {
 	public void getAvaliableStock(Medicine medicine);
 	public void getPharmacyDetails();
 
-
 }
