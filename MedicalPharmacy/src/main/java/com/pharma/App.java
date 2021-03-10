@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
-import com.dao.PharmacyDaoImpl;
+import com.dao.MedicineDaoImpl;
+import com.dao.OrderDaoImpl;
 import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
@@ -29,8 +30,11 @@ public class App {
 		 * System.out.println(medicine);
 		 */
 
-		PharmacyDaoImpl dao = context.getBean("pharmacyDaoImpl", PharmacyDaoImpl.class);
-		//System.out.println("Pharmacy " + dao);
+		MedicineDaoImpl daoMedicine = context.getBean("medicineDaoImpl", MedicineDaoImpl.class);
+		System.out.println("daoMedicine : " + daoMedicine);
+		
+		OrderDaoImpl daoOrder=context.getBean("orderDaoImpl", OrderDaoImpl.class);
+		System.out.println("daoOrder : "+daoOrder);
 
 		/*
 		 * ServiceController controller=new ServiceController();
@@ -138,7 +142,7 @@ public class App {
 				case 1:
 					// insert medicine
 					newMedicine.setMedicineDetails();
-					int result = dao.insertMedicine(newMedicine);
+					int result = daoMedicine.insertMedicine(newMedicine);
 					System.out.println("Medicine Added..." + result);
 					break;
 				case 2:
@@ -152,24 +156,24 @@ public class App {
 					newMedicine.setMedicineId(medId);
 					newMedicine.setPrice(medPrice);
 					newMedicine.setQuantity(quantity);
-					int updateResult = dao.updateMedicine(newMedicine);
+					int updateResult = daoMedicine.updateMedicine(newMedicine);
 					System.out.println("medicine Updated ..."+updateResult);
 					break;
 				case 3:
 					System.out.println("Enter Medicine Id to delete Medicine :");
 					int id = Integer.parseInt(br.readLine());
-					int deleteResult = dao.deleteMedicine(id);
+					int deleteResult = daoMedicine.deleteMedicine(id);
 					System.out.println("Medicine delete ..."+ deleteResult);
 					break;
 				case 4:
 					System.out.println("Enter Id to get Medicine by Id ");
 					int mid = Integer.parseInt(br.readLine());
-					Medicine data = dao.getMedicine(mid);
+					Medicine data = daoMedicine.getMedicine(mid);
 					System.out.println(data);
 					break;
 				case 5:
 					System.out.println(" All Available Medicine : ");
-				    List<Medicine> listOfMedicine = dao.getAllMedicines(); 
+				    List<Medicine> listOfMedicine = daoMedicine.getAllMedicines(); 
 				    for (Medicine medicines : listOfMedicine)
 				    { System.out.println(medicines); }
 					break;
@@ -196,7 +200,7 @@ public class App {
 
 				case 1:
 					newOrder.setOrderDetails();
-					int result = dao.insertOrder(newOrder);
+					int result = daoOrder.insertOrder(newOrder);
 					System.out.println("Request raised for Order.. " + result);
 					break;
 				case 2:
@@ -209,24 +213,24 @@ public class App {
 					newOrder.setOrderId(orId);
 					newOrder.setMedicineName(medName);
 					newOrder.setQuantity(quantity);
-					int updateResult = dao.updateOrder(newOrder);
+					int updateResult = daoOrder.updateOrder(newOrder);
 					System.out.println("order updated ..." + updateResult);
 					break;
 				case 3:
 					System.out.println("Enter Order id to delete ...");
 					int orderId = Integer.parseInt(br.readLine());
-					dao.deleteOrder(orderId);
-					System.out.println("order delete ...");
+					int row=daoOrder.deleteOrder(orderId);
+					System.out.println("order delete ..."+row);
 					break;
 				case 4:
 					System.out.println("Enter Order id to get Order :");
 					int id = Integer.parseInt(br.readLine());
-					Order getOrder = dao.getOrder(id);
+					Order getOrder = daoOrder.getOrder(id);
 					System.out.println(getOrder);
 					break;
 				case 5:
 					System.out.println("List of All Orders : ");
-					List<Order> allOrders = dao.getAllOrders();
+					List<Order> allOrders = daoOrder.getAllOrders();
 					for (Order allorder : allOrders) {
 						System.out.println(allorder);
 					}
@@ -255,20 +259,20 @@ public class App {
 
 				case 1:
 					System.out.println(" All Available Medicine : ");
-				    List<Medicine> listOfMedicine = dao.getAllMedicines(); 
+				    List<Medicine> listOfMedicine = daoMedicine.getAllMedicines(); 
 				    for (Medicine medicines : listOfMedicine)
 				    { System.out.println(medicines); }
 					break;
 				case 2:
 					System.out.println("Enter Medicine Name :");
 					String midName = br.readLine();
-					Medicine midByName=dao.searchMedicineByName(midName);
+					Medicine midByName=daoMedicine.searchMedicineByName(midName);
 					System.out.println(midByName);
 					break;
 				case 3:
 					System.out.println("Enter Medicine Brand :");
 					String midBrand = br.readLine();
-					Medicine midByBrand=dao.searchMedicineByBrand(midBrand );
+					Medicine midByBrand=daoMedicine.searchMedicineByBrand(midBrand );
 					System.out.println(midByBrand);
 					break;
 				case 4:
@@ -279,11 +283,11 @@ public class App {
 					}
 					break;
 				case 5:
-					dao.raiseRequestIfOutOfStock();
+					daoOrder.raiseRequestIfOutOfStock();
 					break;
 				case 6:
 					System.out.println("List of all pending orders");
-					List<Order> pendingOrders = dao.getPendingOrders(order);
+					List<Order> pendingOrders = daoOrder.getPendingOrders(order);
 					for (Order orders : pendingOrders) {
 						System.out.println(orders);
 					}

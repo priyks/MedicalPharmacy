@@ -26,10 +26,17 @@
 		<property name="password" value="12@SyZip"></property>
 	</bean>
 
-	<bean id="pharmacyDaoImpl" class="com.dao.PharmacyDaoImpl"
+	<!-- medicineDaoImpl bean -->
+	<bean id="medicineDaoImpl" class="com.dao.MedicineDaoImpl"
 		p:jdbcTemplate-ref="jdbc-template" />
 
-	<!-- <bean class="com.dao.PharmacyDaoImpl" name="pharmacyDaoImplA"> <property 
+
+	<!-- orderDaoImpl bean -->
+	<bean id="orderDaoImpl" class="com.dao.OrderDaoImpl"
+		p:jdbcTemplate-ref="jdbc-template" />
+
+
+	<!-- <bean class="com.dao.MedicineDaoImpl" name="pharmacyDaoImplA"> <property 
 		name="jdbcTemplate" > <ref bean="jdbc-template"/> </property> </bean> -->
 
 
@@ -46,8 +53,9 @@
 	</bean>
 
 	<bean id="serviceController" class="com.service.ServiceController">
-		<property name="ph" ref="pharmacyDaoImpl" />
-		<property name="pharmacy" ref="pharmacy"/>
+		<property name="medicineImpl" ref="medicineDaoImpl" />
+		<property name="orderImpl" ref="orderDaoImpl"/>
+		<property name="pharmacy" ref="pharmacy" />
 	</bean>
 
 	<bean id="doctor1" class="com.pojo.Doctor" scope="prototype">
@@ -58,7 +66,7 @@
 	</bean>
 
 	<!-- Medicine bean -->
-	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype"/>
+	<bean id="medicine1" class="com.pojo.Medicine" scope="prototype" />
 
 
 	<context:property-placeholder

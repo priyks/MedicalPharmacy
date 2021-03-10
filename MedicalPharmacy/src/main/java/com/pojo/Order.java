@@ -68,7 +68,7 @@ public class Order {
 	public void setOrderDetails() throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Order Id :");
-		int id=Integer.parseInt(br.readLine());
+		orderId=Integer.parseInt(br.readLine());
 		System.out.println("Enter Medicine Name :");
 		String name=br.readLine();
 		setMedicineName(name);

@@ -3,22 +3,42 @@ package com.service;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.dao.PharmacyDaoImpl;
+import com.dao.MedicineDaoImpl;
+import com.dao.OrderDaoImpl;
 import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
 import com.pojo.Pharmacy;
+
 /**
  * 
  * This class is used to implement all services of PharmacyService Interface,
- * and also invoke application context , its required to set PharmacyDaoImpl ref to invoke dao related functionality 
+ * and also invoke application context , its required to set MedicineDaoImpl ref
+ * to invoke dao related functionality
+ * 
  * @author priyankaku
  *
  */
 public class ServiceController implements PharmacyService {
 
-	private PharmacyDaoImpl ph;
+	private MedicineDaoImpl medicineImpl;
+	private OrderDaoImpl orderImpl;
 	private Pharmacy pharmacy = null;
+
+	/**
+	 * @return the orderImpl
+	 */
+	public OrderDaoImpl getOrderImpl() {
+		return orderImpl;
+	}
+
+	/**
+	 * @param orderImpl the orderImpl to set
+	 */
+	public void setOrderImpl(OrderDaoImpl orderImpl) {
+		this.orderImpl = orderImpl;
+	}
+
 	/**
 	 * @return the pharmacy
 	 */
@@ -33,34 +53,34 @@ public class ServiceController implements PharmacyService {
 		this.pharmacy = pharmacy;
 	}
 	/**
-	 * @return the harmacyDaoImpl Object
+	 * @return the medicineImpl
 	 */
-	public PharmacyDaoImpl getPh() {
-		return ph;
+	public MedicineDaoImpl getMedicineImpl() {
+		return medicineImpl;
 	}
 
 	/**
-	 * @param sets harmacyDaoImpl Object to ph
+	 * @param medicineImpl the medicineImpl to set
 	 */
-	public void setPh(PharmacyDaoImpl ph) {
-		this.ph = ph;
+	public void setMedicineImpl(MedicineDaoImpl medicineImpl) {
+		this.medicineImpl = medicineImpl;
 	}
 
 	/**
 	 * @return List of All pending Orders
 	 */
 	public List<Order> pendingOrder(Order order) {
-		List<Order> pendingOrders = ph.getPendingOrders(order);
+		List<Order> pendingOrders = orderImpl.getPendingOrders(order);
 		return pendingOrders;
 	}
 
 	/**
 	 * @param Order This Method orders a stock which call insertOrder with Order on
-	 *              PharmacyDaoImpl
+	 *              MedicineDaoImpl
 	 */
 	public void orderStock(Order order) {
 
-		ph.insertOrder(order);
+		orderImpl.insertOrder(order);
 	}
 
 	/**
@@ -104,8 +124,8 @@ public class ServiceController implements PharmacyService {
 	 *                     name found
 	 */
 	public boolean searchMedicineByName(String medicineName) {
-		if (ph.searchMedicineByName(medicineName) != null) {
-			Medicine medicine = ph.searchMedicineByName(medicineName);
+		if (medicineImpl.searchMedicineByName(medicineName) != null) {
+			Medicine medicine = medicineImpl.searchMedicineByName(medicineName);
 			System.out.println(medicine);
 			System.out.println("Medicine is avaliable ...");
 			return true;
@@ -121,8 +141,8 @@ public class ServiceController implements PharmacyService {
 	 */
 	public boolean searchMedicineByBrand(String medicineBrand) {
 
-		if (ph.searchMedicineByBrand(medicineBrand) != null) {
-			Medicine medicine = ph.searchMedicineByBrand(medicineBrand);
+		if (medicineImpl.searchMedicineByBrand(medicineBrand) != null) {
+			Medicine medicine = medicineImpl.searchMedicineByBrand(medicineBrand);
 			System.out.println(medicine);
 			System.out.println("Medicine is avaliable ...");
 			return true;
@@ -137,7 +157,7 @@ public class ServiceController implements PharmacyService {
 	 */
 	public void getAvaliableStock(Medicine medicine) {
 
-		ph.getAllMedicines();
+		medicineImpl.getAllMedicines();
 	}
 
 	/**
