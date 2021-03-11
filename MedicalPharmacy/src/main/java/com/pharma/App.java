@@ -6,12 +6,16 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+
+import com.dao.MedicineDao;
 import com.dao.MedicineDaoImpl;
+import com.dao.OrderDao;
 import com.dao.OrderDaoImpl;
 import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
 import com.pojo.Pharmacy;
+import com.service.PharmacyService;
 import com.service.ServiceController;
 
 public class App {
@@ -20,7 +24,7 @@ public class App {
 		// ClassPathXmlApplicationContext("com/pharma/Pharma-Config.xml");
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		ServiceController controller = new ServiceController();
+		PharmacyService controller = new ServiceController();
 		ApplicationContext context = controller.getApplicationContext();
 		Pharmacy pharmacy = context.getBean("pharmacy", Pharmacy.class);
 		
@@ -30,10 +34,10 @@ public class App {
 		 * System.out.println(medicine);
 		 */
 
-		MedicineDaoImpl daoMedicine = context.getBean("medicineDaoImpl", MedicineDaoImpl.class);
+		MedicineDao daoMedicine = context.getBean("medicineDaoImpl", MedicineDaoImpl.class);
 		System.out.println("daoMedicine : " + daoMedicine);
 		
-		OrderDaoImpl daoOrder=context.getBean("orderDaoImpl", OrderDaoImpl.class);
+		OrderDao daoOrder=context.getBean("orderDaoImpl", OrderDaoImpl.class);
 		System.out.println("daoOrder : "+daoOrder);
 
 		/*

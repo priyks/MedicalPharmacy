@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+
 import com.pojo.Doctor;
 import com.pojo.Medicine;
 import com.pojo.Order;
@@ -19,5 +21,6 @@ public interface PharmacyService {
 	public boolean searchMedicineByBrand(String medicineBrand);
 	public void getAvaliableStock(Medicine medicine);
 	public void getPharmacyDetails();
+	public ApplicationContext getApplicationContext();
 
 }
